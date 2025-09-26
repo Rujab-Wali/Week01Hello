@@ -1,74 +1,45 @@
 ﻿using System;
 
-int N;
-
-// Step 1: Read and validate N > 0
-while (true)
+class Program
 {
-    Console.Write("How many temperature readings (N > 0)? ");
-    string input = Console.ReadLine() ?? "";
-
-    if (int.TryParse(input, out N) && N > 0)
+    static void Main()
     {
-        break;
-    }
-    Console.WriteLine("Invalid input. Please enter a positive integer.");
-}
-
-// Step 2: Create array
-int[] temps = new int[N];
-
-// Step 3: Read N integers into the array
-for (int i = 0; i < N; i++)
-{
-    while (true)
-    {
-        Console.Write($"Enter temperature #{i + 1}: ");
-        string tempInput = Console.ReadLine() ?? "";
-
-        if (int.TryParse(tempInput, out int t))
+        int n;
+        while (true)
         {
-            temps[i] = t;
-            break;
+            Console.Write("How many readings? ");
+            if (int.TryParse(Console.ReadLine(), out n) && n > 0) break;
+            Console.WriteLine("Enter a number > 0.");
         }
-        Console.WriteLine("Invalid input. Please enter a valid integer.");
-    }
-}
 
-// Step 4: Compute min, max, sum
-int min = temps[0];
-int max = temps[0];
-long sum = 0;
+        int[] temps = new int[n];
+        for (int i = 0; i < n; i++)
+        {
+            while (true)
+            {
+                Console.Write($"Temp #{i + 1}: ");
+                if (int.TryParse(Console.ReadLine(), out temps[i])) break;
+                Console.WriteLine("Invalid, try again.");
+            }
+        }
 
-for (int i = 0; i < N; i++)
-{
-    int v = temps[i];
-    if (v < min) min = v;
-    if (v > max) max = v;
-    sum += v;
-}
+        int min = temps[0], max = temps[0], sum = 0;
+        for (int i = 0; i < n; i++)
+        {
+            if (temps[i] < min) min = temps[i];
+            if (temps[i] > max) max = temps[i];
+            sum += temps[i];
+        }
+        double avg = sum / (double)n;
 
-// Step 5: Compute average
-double avg = sum / (double)N;
+        Console.WriteLine($"\nMin = {min}, Max = {max}, Avg = {avg:F2}");
 
-// Step 6: Print results
-Console.WriteLine("\n--- Temperature Report ---");
-Console.WriteLine($"Min = {min}");
-Console.WriteLine($"Max = {max}");
-Console.WriteLine($"Avg = {avg:F2}");
-
-// Step 7: Print histogram
-Console.WriteLine("\nHistogram (value : stars = occurrences):");
-for (int value = min; value <= max; value++)
-{
-    int count = 0;
-    for (int i = 0; i < N; i++)
-    {
-        if (temps[i] == value) count++;
-    }
-
-    if (count > 0)
-    {
-        Console.WriteLine($"{value,4} : {new string('*', count)}");
+        Console.WriteLine("\nHistogram:");
+        foreach (int t in temps)
+        {
+            Console.Write($"{t,3}: ");
+            for (int j = 0; j < Math.Abs(t); j++) Console.Write("*");
+            Console.WriteLine();
+        }
     }
 }
