@@ -1,0 +1,49 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Read a full name and city, then compute initials and a simple ID.
+        // ID format example: CITY_INITIALS_LEN (e.g., LAHORE_SK_12)
+
+        Console.Write("Full name: ");
+        string? fullNameIn = Console.ReadLine();
+
+        Console.Write("City: ");
+        string? cityIn = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(fullNameIn) || string.IsNullOrWhiteSpace(cityIn))
+        {
+            Console.WriteLine("Both name and city are required.");
+            return;
+        }
+
+        string fullName = fullNameIn.Trim();
+        string city = cityIn.Trim();
+
+        // Split name by whitespace. Use first and last tokens for initials if available.
+        string[] parts = fullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+        char firstInitial = char.ToUpperInvariant(parts[0][0]);
+        char lastInitial = (parts.Length > 1)
+            ? char.ToUpperInvariant(parts[^1][0]) // last token’s first character
+            : '_'; // placeholder if no last name
+
+        string initials = (lastInitial == '_')
+            ? $"{firstInitial}."
+            : $"{firstInitial}.{lastInitial}.";
+
+        int nameLength = fullName.Length; // includes spaces between words
+
+        // Build simple ID: CITY_INITIALS_LEN
+        string id = (lastInitial == '_')
+            ? $"{city.ToUpperInvariant()}_{firstInitial}_{nameLength}"
+            : $"{city.ToUpperInvariant()}_{firstInitial}{lastInitial}_{nameLength}";
+
+        Console.WriteLine();
+        Console.WriteLine($"Hello, {fullName} ({initials}) from {city}");
+        Console.WriteLine($"Name length: {nameLength}");
+        Console.WriteLine($"ID: {id}");
+    }
+}
