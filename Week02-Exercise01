@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Read one line of text and display common string transformations.
+        // Notes:
+        // - ReadLine() can return null; always check for null/empty.
+        // - Trim() removes leading/trailing whitespace but leaves inner spaces intact.
+        // - ToUpperInvariant()/ToLowerInvariant() are culture-agnostic and predictable for grading.
+
+        Console.Write("Enter text: ");
+        string? input = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            Console.WriteLine("No text entered.");
+        }
+        else
+        {
+            string trimmed = input.Trim();
+            Console.WriteLine($"Trimmed : {trimmed}");
+            Console.WriteLine($"UPPER   : {trimmed.ToUpperInvariant()}");
+            Console.WriteLine($"lower   : {trimmed.ToLowerInvariant()}");
+            Console.WriteLine($"Length (raw) : {input.Length}");   // includes whitespace
+            Console.WriteLine($"Length (trim): {trimmed.Length}"); // excludes outer whitespace
+        }
+    }
+}
