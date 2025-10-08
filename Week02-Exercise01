@@ -13,7 +13,7 @@ using System;
             Console.WriteLine($"Trimmed : {trimmed}");
             Console.WriteLine($"UPPER   : {trimmed.ToUpperInvariant()}");
             Console.WriteLine($"lower   : {trimmed.ToLowerInvariant()}");
-            Console.WriteLine($"Length (raw) : {input.Length}");   // includes whitespace
-            Console.WriteLine($"Length (trim): {trimmed.Length}"); // excludes outer whitespace
+            Console.WriteLine($"Length (raw) : {input.Length}");
+            Console.WriteLine($"Length (trim): {trimmed.Length}");
         }
     }
