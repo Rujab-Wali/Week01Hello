@@ -1,15 +1,5 @@
 using System;
-
-class Program
-{
-    static void Main()
     {
-        // Read one line of text and display common string transformations.
-        // Notes:
-        // - ReadLine() can return null; always check for null/empty.
-        // - Trim() removes leading/trailing whitespace but leaves inner spaces intact.
-        // - ToUpperInvariant()/ToLowerInvariant() are culture-agnostic and predictable for grading.
-
         Console.Write("Enter text: ");
         string? input = Console.ReadLine();
 
@@ -27,4 +17,3 @@ class Program
             Console.WriteLine($"Length (trim): {trimmed.Length}"); // excludes outer whitespace
         }
     }
-}
