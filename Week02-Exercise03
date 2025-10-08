@@ -1,5 +1,6 @@
 using System;
 
+  {
        Console.WriteLine("1) Add  2) Sub  3) Mul  4) Div  Q) Quit");
         Console.Write("Choose: ");
         string? choice = Console.ReadLine();
@@ -53,4 +54,3 @@ using System;
 
         Console.WriteLine($"Result = {result:F2}");
     }
-}
