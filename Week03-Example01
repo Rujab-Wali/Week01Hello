@@ -1,0 +1,28 @@
+using System;
+
+    {
+        Console.Write("Temperature: ");
+        string? tIn = Console.ReadLine();
+
+        Console.Write("Unit (C/F): ");
+        string? uIn = Console.ReadLine();
+
+        if (!double.TryParse(tIn, out double t) || string.IsNullOrWhiteSpace(uIn))
+        {
+            Console.WriteLine("Invalid input.");
+        }
+        else
+        {
+            char unit = char.ToUpperInvariant(uIn.Trim()[0]);
+            bool isFreezing = (unit == 'C' && t <= 0) || (unit == 'F' && t <= 32);
+            bool isHot = (unit == 'C' && t >= 30) || (unit == 'F' && t >= 86);
+
+            if (isFreezing)
+                Console.WriteLine("Freezing");
+            else if (isHot)
+                Console.WriteLine("Hot");
+            else
+                Console.WriteLine("Mild");
+        }
+    }
+}
