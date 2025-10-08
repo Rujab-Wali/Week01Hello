@@ -1,11 +1,6 @@
 using System;
 
-class Program
-{
-    static void Main()
-    {
-        // Read N (positive integer), then N marks in the 0..100 range with validation.
-
+     {  
         int n;
         while (true)
         {
@@ -57,4 +52,3 @@ class Program
             Console.WriteLine();
         }
     }
-}
