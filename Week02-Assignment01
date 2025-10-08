@@ -1,12 +1,6 @@
 using System;
 
-class Program
-{
-    static void Main()
     {
-        // A looped calculator. Continues to accept choices until the user quits.
-        // This version keeps logic simple and readable for Week 2.
-
         while (true)
         {
             Console.WriteLine();
@@ -65,4 +59,3 @@ class Program
             Console.WriteLine($"Result = {result:F2}");
         }
     }
-}
