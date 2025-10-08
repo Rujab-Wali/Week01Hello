@@ -1,0 +1,28 @@
+using System;
+
+    {
+        Console.Write("Percentage (0..100): ");
+        string? s = Console.ReadLine();
+
+        if (!int.TryParse(s, out int pct) || pct < 0 || pct > 100)
+        {
+            Console.WriteLine("Enter a whole number in 0..100.");
+            return;
+        }
+
+        string grade;
+
+        if (pct >= 85)
+            grade = "A";
+        else if (pct >= 75)
+            grade = "B";
+        else if (pct >= 65)
+            grade = "C";
+        else if (pct >= 50)
+            grade = "D";
+        else
+            grade = "F";
+
+        Console.WriteLine($"Grade: {grade}");
+    }
+}
