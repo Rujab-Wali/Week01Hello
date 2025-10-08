@@ -16,7 +16,6 @@ using System;
         string fullName = fullNameIn.Trim();
         string city = cityIn.Trim();
 
-        // Split name by whitespace. Use first and last tokens for initials if available.
         string[] parts = fullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
         char firstInitial = char.ToUpperInvariant(parts[0][0]);
